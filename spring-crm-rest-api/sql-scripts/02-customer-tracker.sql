@@ -46,6 +46,8 @@ INSERT INTO `customer` VALUES
 	(3,'Ajay','Rao','ajay@luv2code.com'),
 	(4,'Mary','Public','mary@luv2code.com'),
 	(5,'Maxwell','Dixon','max@luv2code.com');
+	(6,'Peter','Luke','luke@luv2code.com');
+	(7,'Jayden','Parker','parker@luv2code.com');
 
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
