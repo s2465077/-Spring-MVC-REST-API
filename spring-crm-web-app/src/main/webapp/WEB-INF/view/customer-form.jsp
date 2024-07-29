@@ -35,17 +35,20 @@
 				<tbody>
 					<tr>
 						<td><label>First name:</label></td>
-						<td><form:input path="firstName" /></td>
+						<!-- Added validation attributes -->
+						<<td><form:input path="firstName" required="true" minlength="2" /></td>
 					</tr>
 				
 					<tr>
 						<td><label>Last name:</label></td>
-						<td><form:input path="lastName" /></td>
+						<!-- Added validation attributes -->
+						<td><form:input path="lastName" required="true" minlength="2" /></td>
 					</tr>
 
 					<tr>
 						<td><label>Email:</label></td>
-						<td><form:input path="email" /></td>
+						<!-- Added validation attributes -->
+						<td><form:input path="email" type="email" required="true" /></td>
 					</tr>
 
 					<tr>

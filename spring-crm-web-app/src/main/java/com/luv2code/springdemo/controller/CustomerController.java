@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;    // Validate name, email
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.luv2code.springdemo.model.Customer;
 import com.luv2code.springdemo.service.CustomerService;
+
+import javax.validation.Valid;			// Validate name, email
 
 @Controller
 @RequestMapping("/customer")
@@ -44,10 +47,18 @@ public class CustomerController {
 		
 		return "customer-form";
 	}
-	
+
+	// Added @Valid annotation and BindingResult
+	// Validate the entry before saving
 	@PostMapping("/saveCustomer")
-	public String saveCustomer(@ModelAttribute("customer") Customer theCustomer) {
-		
+	public String saveCustomer(@Valid @ModelAttribute("customer") Customer theCustomer,
+							   BindingResult theBindingResult) {
+
+		// Check for validation errors
+		if (theBindingResult.hasErrors()) {
+			return "customer-form";
+		}
+
 		// save the customer using our service
 		customerService.saveCustomer(theCustomer);	
 		
