@@ -1,0 +1,22 @@
+services:
+  backend:
+    build:
+      context: ./spring-crm-rest-api
+      dockerfile: Dockerfile-backend
+    container_name: spring-crm-rest
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./spring-crm-web-app
+      dockerfile: Dockerfile-frontend
+    container_name: spring-mvc-frontend
+    ports:
+      - "8888:8080"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    environment:
+      - API_URL=http://backend:8080/api/customers
